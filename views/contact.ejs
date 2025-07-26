@@ -1,0 +1,388 @@
+<%- include('partials/header') %>
+
+<!-- Contact Hero Section -->
+<section class="hero-section bg-gradient-primary text-white" style="margin-top: 76px;">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Contact Us</h1>
+                <p class="lead mb-4">
+                    Get in touch with us to learn more about our club, upcoming events, or how you can get involved 
+                    in making a positive impact in our community.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information & Form Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <h3 class="fw-bold text-rotaract-blue mb-4">Get In Touch</h3>
+                    
+                    <!-- Contact Cards -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-rotaract-blue text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Address</h6>
+                                    <small class="text-muted">Visit us at</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                123 Community Center<br>
+                                Downtown District<br>
+                                City, State 12345
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-rotaract-gold text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Phone</h6>
+                                    <small class="text-muted">Call us</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                <a href="tel:+1234567890" class="text-decoration-none">+1 (234) 567-8900</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-rotaract-blue text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Email</h6>
+                                    <small class="text-muted">Send us a message</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                <a href="mailto:info@rotaractclub.org" class="text-decoration-none">info@rotaractclub.org</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h6 class="fw-bold mb-3">Follow Us</h6>
+                            <div class="d-flex gap-3">
+                                <a href="#" class="text-rotaract-blue fs-4"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-rotaract-blue fs-4"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-rotaract-blue fs-4"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-rotaract-blue fs-4"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h3 class="fw-bold text-rotaract-blue mb-4">Send us a Message</h3>
+                        
+                        <form id="contactForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    <div class="invalid-feedback">Please provide your first name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    <div class="invalid-feedback">Please provide your last name.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row g-3 mt-2">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="">Choose a subject...</option>
+                                    <option value="membership">Membership Inquiry</option>
+                                    <option value="events">Event Information</option>
+                                    <option value="volunteer">Volunteer Opportunities</option>
+                                    <option value="partnership">Partnership/Sponsorship</option>
+                                    <option value="donation">Donation Inquiry</option>
+                                    <option value="general">General Question</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a subject.</div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+                                <div class="invalid-feedback">Please provide your message.</div>
+                            </div>
+                            
+                            <!-- Interest Areas -->
+                            <div class="mt-4">
+                                <label class="form-label">Areas of Interest (Optional)</label>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="communityService" name="interests" value="community-service">
+                                            <label class="form-check-label" for="communityService">Community Service</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="fundraising" name="interests" value="fundraising">
+                                            <label class="form-check-label" for="fundraising">Fundraising</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="leadership" name="interests" value="leadership">
+                                            <label class="form-check-label" for="leadership">Leadership Development</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="networking" name="interests" value="networking">
+                                            <label class="form-check-label" for="networking">Professional Networking</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Newsletter Subscription -->
+                            <div class="mt-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" value="yes">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for updates on events and activities
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-rotaract btn-lg" id="submitBtn">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-rotaract-blue">Find Us</h2>
+            <p class="lead text-muted">Visit us at our regular meeting location</p>
+        </div>
+        
+        <!-- Placeholder for Google Maps -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+                <div id="map" style="height: 400px; background: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+                    <div class="text-center text-muted">
+                        <i class="fas fa-map fa-3x mb-3"></i>
+                        <h5>Interactive Map</h5>
+                        <p>Google Maps integration would be implemented here</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline-rotaract">
+                            <i class="fas fa-external-link-alt me-2"></i>View on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-rotaract-blue">Frequently Asked Questions</h2>
+            <p class="lead text-muted">Quick answers to common questions</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                How can I join the Rotaract Club?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                To join our club, simply fill out the contact form above with "Membership Inquiry" as the subject, 
+                                or attend one of our regular meetings. We welcome young professionals aged 18-30 who are passionate 
+                                about community service and leadership development.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                When and where do you meet?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We meet every second and fourth Tuesday of the month at 7:00 PM at the Community Center. 
+                                Check our events page for the most up-to-date meeting schedule and any special events.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                What types of projects do you work on?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our projects focus on community service, environmental conservation, education support, 
+                                healthcare initiatives, and professional development. Recent projects include beach cleanups, 
+                                blood donation drives, scholarship programs, and skill development workshops.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                Is there a membership fee?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, there is a modest annual membership fee that helps cover club operations, meeting expenses, 
+                                and project funding. The exact amount and payment options will be discussed during the membership 
+                                application process. We also offer flexible payment plans if needed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!contactForm.checkValidity()) {
+            e.stopPropagation();
+            contactForm.classList.add('was-validated');
+            return;
+        }
+        
+        // Disable submit button and show loading
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+        
+        try {
+            // Collect form data
+            const formData = new FormData(contactForm);
+            const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+            
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                subject: formData.get('subject'),
+                message: formData.get('message'),
+                interests: interests,
+                newsletter: formData.get('newsletter') === 'yes'
+            };
+            
+            // Send to server
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Show success message
+                showAlert('success', 'Message sent successfully! We\'ll get back to you soon.');
+                contactForm.reset();
+                contactForm.classList.remove('was-validated');
+            } else {
+                showAlert('danger', result.message || 'Failed to send message. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            showAlert('danger', 'Failed to send message. Please try again.');
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+        }
+    });
+    
+    function showAlert(type, message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        
+        contactForm.insertBefore(alertDiv, contactForm.firstChild);
+        
+        // Auto-dismiss after 5 seconds
+        setTimeout(() => {
+            if (alertDiv.parentNode) {
+                alertDiv.remove();
+            }
+        }, 5000);
+    }
+});
+</script>
+
+<%- include('partials/footer') %>

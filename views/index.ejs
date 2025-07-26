@@ -1,0 +1,390 @@
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+<section class="bg-rotaract-blue text-white py-5" style="margin-top: 76px;">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    Rotaract Club
+                    <span class="text-rotaract-gold d-block">Community Service</span>
+                </h1>
+                <p class="lead mb-4">
+                    Empowering young leaders to create positive change in our community through service, 
+                    fellowship, and professional development.
+                </p>
+                <div class="btn-container-responsive">
+                    <a href="/register" class="btn btn-rotaract btn-lg btn-animate me-3 mb-2">
+                        <i class="fas fa-users me-2"></i>Join Us Today
+                    </a>
+                    <a href="/donate" class="btn btn-outline-light btn-lg btn-animate mb-2">
+                        <i class="fas fa-heart me-2"></i>Donate Now
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="/images/rotaract-hero.png" alt="Rotaract Community Service" 
+                     class="img-fluid" style="max-height: 400px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="display-5 fw-bold text-rotaract-blue">About Rotaract</h2>
+                <p class="lead text-muted">
+                    Discover our mission, values, and commitment to community service
+                </p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-rotaract-blue text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px;">
+                            <i class="fas fa-heart fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Community Service</h4>
+                        <p class="text-muted">
+                            We organize impactful community service projects that address local needs 
+                            and create lasting positive change in our neighborhoods.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-rotaract-gold text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px;">
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Leadership Development</h4>
+                        <p class="text-muted">
+                            Through hands-on experience and mentorship, we develop the next generation 
+                            of community leaders and changemakers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-rotaract-blue text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px;">
+                            <i class="fas fa-globe fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Global Network</h4>
+                        <p class="text-muted">
+                            Connect with like-minded individuals worldwide through Rotaract's 
+                            international network of service-oriented young professionals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="display-5 fw-bold text-rotaract-blue">Upcoming Events</h2>
+                <p class="lead text-muted">
+                    Join us in our upcoming community service events and activities
+                </p>
+            </div>
+        </div>
+        <div class="row g-4" id="upcomingEvents">
+            <!-- Events will be loaded dynamically -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/event-placeholder.jpg" class="card-img-top" alt="Community Cleanup Drive" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary">Community Service</span>
+                            <small class="text-muted">Dec 15, 2024</small>
+                        </div>
+                        <h5 class="card-title">Community Cleanup Drive</h5>
+                        <p class="card-text text-muted">
+                            Join us for a community-wide cleanup initiative to beautify our local parks and neighborhoods.
+                        </p>
+                        <a href="/events" class="btn btn-rotaract w-100 w-sm-auto">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/event-placeholder.jpg" class="card-img-top" alt="Blood Donation Camp" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-danger">Health Initiative</span>
+                            <small class="text-muted">Dec 20, 2024</small>
+                        </div>
+                        <h5 class="card-title">Blood Donation Camp</h5>
+                        <p class="card-text text-muted">
+                            Help save lives by participating in our quarterly blood donation drive.
+                        </p>
+                        <a href="/events" class="btn btn-rotaract w-100 w-sm-auto">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/event-placeholder.jpg" class="card-img-top" alt="Youth Leadership Workshop" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success">Workshop</span>
+                            <small class="text-muted">Jan 5, 2025</small>
+                        </div>
+                        <h5 class="card-title">Youth Leadership Workshop</h5>
+                        <p class="card-text text-muted">
+                            Develop essential leadership skills through interactive workshops.
+                        </p>
+                        <a href="/events" class="btn btn-rotaract w-100 w-sm-auto">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/events" class="btn btn-outline-primary btn-lg btn-animate w-100 w-sm-auto">
+                <i class="fas fa-calendar me-2"></i>View All Events
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-5 bg-rotaract-blue text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="display-6 fw-bold mb-3">Ready to Make a Difference?</h2>
+                <p class="lead mb-0">
+                    Join our community of passionate young leaders and help create positive change in our world.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <div class="d-flex flex-column flex-lg-row gap-2">
+                    <a href="/register" class="btn btn-rotaract btn-lg btn-animate">
+                        <i class="fas fa-user-plus me-2"></i>Join Us
+                    </a>
+                    <a href="/donate" class="btn btn-outline-light btn-lg btn-animate">
+                        <i class="fas fa-heart me-2"></i>Donate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Load upcoming events dynamically
+    document.addEventListener('DOMContentLoaded', function() {
+        loadUpcomingEvents();
+    });
+
+    async function loadUpcomingEvents() {
+        try {
+            const response = await fetch('/api/events/upcoming?limit=6');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.data.events.length > 0) {
+                    renderEvents(data.data.events);
+                }
+            }
+        } catch (error) {
+            console.error('Failed to load events:', error);
+        }
+    }
+
+    function renderEvents(events) {
+        const container = document.getElementById('upcomingEvents');
+        container.innerHTML = '';
+
+        events.forEach(event => {
+            const eventCard = createEventCard(event);
+            container.appendChild(eventCard);
+        });
+    }
+
+    function createEventCard(event) {
+        const col = document.createElement('div');
+        col.className = 'col-lg-4 col-md-6';
+        
+        const categoryColors = {
+            'community-service': 'primary',
+            'health': 'danger',
+            'education': 'success',
+            'environmental': 'success',
+            'fundraising': 'warning',
+            'social': 'info'
+        };
+
+        col.innerHTML = `
+            <div class="card border-0 shadow-sm">
+                <img src="${event.primaryImage || '/images/event-placeholder.jpg'}" 
+                     class="card-img-top" alt="${event.title}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-${categoryColors[event.category] || 'primary'}">
+                            ${event.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                        </span>
+                        <small class="text-muted">${formatDate(event.startDate)}</small>
+                    </div>
+                    <h5 class="card-title">${event.title}</h5>
+                    <p class="card-text text-muted">
+                        ${event.shortDescription || event.description.substring(0, 100) + '...'}
+                    </p>
+                    <a href="/events/${event._id}" class="btn btn-rotaract btn-animate w-100 w-sm-auto">
+                        <i class="fas fa-info-circle me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
+        `;
+        
+        return col;
+    }
+    
+    // Debug donate buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded - checking donate buttons');
+        
+        const donateButtons = document.querySelectorAll('a[href="/donate"]');
+        console.log('Found', donateButtons.length, 'donate buttons');
+        
+        donateButtons.forEach((button, index) => {
+            console.log('Button', index + 1, ':', button);
+            console.log('Button styles:', window.getComputedStyle(button));
+            console.log('Button position:', button.getBoundingClientRect());
+            
+            // Add click event listener
+            button.addEventListener('click', function(e) {
+                console.log('Donate button clicked!', e);
+                console.log('Target:', e.target);
+                console.log('Current target:', e.currentTarget);
+                console.log('Href:', this.href);
+                
+                // Force navigation if needed
+                if (!e.defaultPrevented) {
+                    console.log('Navigating to:', this.href);
+                }
+            });
+            
+            // Test if button is clickable
+            button.style.border = '2px solid red';
+            setTimeout(() => {
+                button.style.border = '';
+            }, 2000);
+        });
+    });
+    
+    // Function to handle donate button clicks
+    function goToDonate() {
+        console.log('🎯 goToDonate function called');
+        
+        // Method 1: Direct window.location
+        try {
+            console.log('Attempting Method 1: window.location.href');
+            window.location.href = '/donate';
+            return;
+        } catch (e) {
+            console.error('Method 1 failed:', e);
+        }
+        
+        // Method 2: window.location.assign
+        try {
+            console.log('Attempting Method 2: window.location.assign');
+            window.location.assign('/donate');
+            return;
+        } catch (e) {
+            console.error('Method 2 failed:', e);
+        }
+        
+        // Method 3: Create and click a link
+        try {
+            console.log('Attempting Method 3: programmatic link click');
+            const link = document.createElement('a');
+            link.href = '/donate';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            return;
+        } catch (e) {
+            console.error('Method 3 failed:', e);
+        }
+        
+        // Method 4: Form submission
+        try {
+            console.log('Attempting Method 4: form submission');
+            const form = document.createElement('form');
+            form.method = 'GET';
+            form.action = '/donate';
+            form.style.display = 'none';
+            document.body.appendChild(form);
+            form.submit();
+            return;
+        } catch (e) {
+            console.error('Method 4 failed:', e);
+        }
+        
+        // Method 5: Fetch and manual navigation
+        try {
+            console.log('Attempting Method 5: fetch test');
+            fetch('/donate')
+                .then(response => {
+                    if (response.ok) {
+                        window.location = '/donate';
+                    } else {
+                        console.error('Donate page not accessible:', response.status);
+                        alert('Donate page is not accessible. Please try again later.');
+                    }
+                })
+                .catch(err => {
+                    console.error('Fetch failed:', err);
+                    alert('Unable to access donate page. Please check your connection.');
+                });
+        } catch (e) {
+            console.error('Method 5 failed:', e);
+            alert('All navigation methods failed. Please manually navigate to /donate');
+        }
+    }
+    
+    // Alternative function for testing
+    function testDonateNavigation() {
+        console.log('🧪 Testing donate navigation...');
+        
+        // Test if the donate page exists
+        fetch('/donate', { method: 'HEAD' })
+            .then(response => {
+                console.log('Donate page status:', response.status);
+                if (response.ok) {
+                    console.log('✅ Donate page is accessible');
+                    goToDonate();
+                } else {
+                    console.error('❌ Donate page returned:', response.status);
+                    alert(`Donate page error: ${response.status}`);
+                }
+            })
+            .catch(error => {
+                console.error('❌ Cannot reach donate page:', error);
+                alert('Cannot reach donate page. Server may be down.');
+            });
+    }
+</script>
+
+<%- include('partials/footer') %>

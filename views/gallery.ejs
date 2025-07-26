@@ -1,0 +1,257 @@
+<%- include('partials/header') %>
+
+<!-- Gallery Hero Section -->
+<section class="hero-section bg-gradient-primary text-white" style="margin-top: 76px;">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Photo Gallery</h1>
+                <p class="lead mb-4">
+                    Explore moments from our events, community service projects, and club activities. 
+                    See the impact we're making together in our community.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Filters -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="text-center">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <button class="btn btn-rotaract active" data-filter="all">All Photos</button>
+                <button class="btn btn-outline-rotaract" data-filter="community-service">Community Service</button>
+                <button class="btn btn-outline-rotaract" data-filter="fundraising">Fundraising</button>
+                <button class="btn btn-outline-rotaract" data-filter="social">Social Events</button>
+                <button class="btn btn-outline-rotaract" data-filter="meetings">Meetings</button>
+                <button class="btn btn-outline-rotaract" data-filter="awards">Awards</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Photo Gallery Grid -->
+<section class="py-5">
+    <div class="container">
+        <div id="galleryContainer" class="row g-4">
+            <!-- Sample photos - replace with dynamic content -->
+            <div class="col-lg-4 col-md-6 gallery-item" data-category="community-service">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/gallery/community-1.jpg" class="card-img-top gallery-image" alt="Community Service" style="height: 250px; object-fit: cover; cursor: pointer;">
+                    <div class="card-body">
+                        <h6 class="card-title">Beach Cleanup Drive</h6>
+                        <p class="card-text text-muted small">Environmental conservation project at Marina Beach</p>
+                        <span class="badge bg-primary">Community Service</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 gallery-item" data-category="fundraising">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/gallery/fundraising-1.jpg" class="card-img-top gallery-image" alt="Fundraising Event" style="height: 250px; object-fit: cover; cursor: pointer;">
+                    <div class="card-body">
+                        <h6 class="card-title">Charity Auction</h6>
+                        <p class="card-text text-muted small">Annual charity auction for education fund</p>
+                        <span class="badge bg-success">Fundraising</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 gallery-item" data-category="social">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/gallery/social-1.jpg" class="card-img-top gallery-image" alt="Social Event" style="height: 250px; object-fit: cover; cursor: pointer;">
+                    <div class="card-body">
+                        <h6 class="card-title">Annual Gala Dinner</h6>
+                        <p class="card-text text-muted small">Celebrating achievements and fellowship</p>
+                        <span class="badge bg-info">Social</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 gallery-item" data-category="community-service">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/gallery/community-2.jpg" class="card-img-top gallery-image" alt="Blood Donation" style="height: 250px; object-fit: cover; cursor: pointer;">
+                    <div class="card-body">
+                        <h6 class="card-title">Blood Donation Camp</h6>
+                        <p class="card-text text-muted small">Quarterly blood donation drive</p>
+                        <span class="badge bg-primary">Community Service</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 gallery-item" data-category="meetings">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/gallery/meeting-1.jpg" class="card-img-top gallery-image" alt="Club Meeting" style="height: 250px; object-fit: cover; cursor: pointer;">
+                    <div class="card-body">
+                        <h6 class="card-title">Monthly Club Meeting</h6>
+                        <p class="card-text text-muted small">Planning upcoming projects and activities</p>
+                        <span class="badge bg-secondary">Meetings</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 gallery-item" data-category="awards">
+                <div class="card border-0 shadow-sm">
+                    <img src="/images/gallery/awards-1.jpg" class="card-img-top gallery-image" alt="Awards Ceremony" style="height: 250px; object-fit: cover; cursor: pointer;">
+                    <div class="card-body">
+                        <h6 class="card-title">District Awards</h6>
+                        <p class="card-text text-muted small">Recognition for outstanding service</p>
+                        <span class="badge bg-warning">Awards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="text-center mt-5">
+            <button class="btn btn-outline-rotaract btn-lg" id="loadMoreBtn">
+                <i class="fas fa-plus me-2"></i>Load More Photos
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Photo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid" alt="">
+                <div class="mt-3">
+                    <h6 id="modalImageTitle"></h6>
+                    <p id="modalImageDescription" class="text-muted"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-rotaract" id="downloadBtn">
+                    <i class="fas fa-download me-2"></i>Download
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    document.querySelectorAll('[data-filter]').forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active button
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.classList.remove('active', 'btn-rotaract');
+                btn.classList.add('btn-outline-rotaract');
+            });
+            
+            this.classList.add('active', 'btn-rotaract');
+            this.classList.remove('btn-outline-rotaract');
+            
+            // Filter gallery items
+            const filter = this.dataset.filter;
+            filterGallery(filter);
+        });
+    });
+    
+    // Image modal functionality
+    document.querySelectorAll('.gallery-image').forEach(image => {
+        image.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const title = card.querySelector('.card-title').textContent;
+            const description = card.querySelector('.card-text').textContent;
+            
+            document.getElementById('modalImage').src = this.src;
+            document.getElementById('modalImageTitle').textContent = title;
+            document.getElementById('modalImageDescription').textContent = description;
+            document.getElementById('imageModalLabel').textContent = title;
+            
+            new bootstrap.Modal(document.getElementById('imageModal')).show();
+        });
+    });
+    
+    // Download functionality
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        const imageUrl = document.getElementById('modalImage').src;
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = 'rotaract-photo.jpg';
+        link.click();
+    });
+    
+    // Load more functionality (placeholder)
+    document.getElementById('loadMoreBtn').addEventListener('click', function() {
+        // This would typically load more photos from the server
+        alert('Load more functionality would be implemented here');
+    });
+    
+    function filterGallery(category) {
+        const items = document.querySelectorAll('.gallery-item');
+        
+        items.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'block';
+                // Add fade-in animation
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                }, 100);
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+});
+
+// Lazy loading for images (optional enhancement)
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+</script>
+
+<style>
+.gallery-item {
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-image {
+    transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+}
+
+.modal-body img {
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        margin: 1rem;
+    }
+}
+</style>
+
+<%- include('partials/footer') %>

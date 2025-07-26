@@ -1,0 +1,193 @@
+<%- include('partials/header') %>
+
+<!-- Error Section -->
+<section class="py-5" style="margin-top: 76px; min-height: 70vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <div class="error-content">
+                    <i class="fas fa-exclamation-triangle fa-5x text-warning mb-4"></i>
+                    <h1 class="display-4 fw-bold text-rotaract-blue mb-3">Oops! Something went wrong</h1>
+                    <p class="lead text-muted mb-4">
+                        We encountered an unexpected error while processing your request. 
+                        Our team has been notified and is working to fix this issue.
+                    </p>
+                    
+                    <% if (typeof error !== 'undefined' && error) { %>
+                        <div class="alert alert-danger text-start mb-4">
+                            <h6 class="fw-bold">Error Details:</h6>
+                            <p class="mb-0"><%= error.message || 'An unexpected error occurred' %></p>
+                            <% if (typeof error.stack !== 'undefined' && process.env.NODE_ENV === 'development') { %>
+                                <hr>
+                                <pre class="small text-muted"><%= error.stack %></pre>
+                            <% } %>
+                        </div>
+                    <% } %>
+                    
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="/" class="btn btn-rotaract btn-lg">
+                            <i class="fas fa-home me-2"></i>Go Home
+                        </a>
+                        <button onclick="history.back()" class="btn btn-outline-rotaract btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i>Go Back
+                        </button>
+                        <a href="/contact" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Contact Support
+                        </a>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5 class="fw-bold text-rotaract-blue mb-3">What you can do:</h5>
+                        <div class="row g-3 text-start">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-redo text-rotaract-blue me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold">Try Again</h6>
+                                        <p class="text-muted small mb-0">Refresh the page or try your action again in a few moments.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-home text-rotaract-blue me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold">Visit Homepage</h6>
+                                        <p class="text-muted small mb-0">Return to our homepage and navigate from there.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-search text-rotaract-blue me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold">Check URL</h6>
+                                        <p class="text-muted small mb-0">Make sure the web address is correct and complete.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-envelope text-rotaract-blue me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold">Contact Us</h6>
+                                        <p class="text-muted small mb-0">If the problem persists, please let us know.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Links Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h4 class="fw-bold text-rotaract-blue">Popular Pages</h4>
+            <p class="text-muted">Maybe you were looking for one of these?</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-lg-3 col-md-6">
+                <a href="/" class="card border-0 shadow-sm text-decoration-none h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-home fa-2x text-rotaract-blue mb-3"></i>
+                        <h6 class="fw-bold">Home</h6>
+                        <p class="text-muted small mb-0">Return to our homepage</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="/about" class="card border-0 shadow-sm text-decoration-none h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-info-circle fa-2x text-rotaract-blue mb-3"></i>
+                        <h6 class="fw-bold">About Us</h6>
+                        <p class="text-muted small mb-0">Learn about our club</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="/events" class="card border-0 shadow-sm text-decoration-none h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar fa-2x text-rotaract-blue mb-3"></i>
+                        <h6 class="fw-bold">Events</h6>
+                        <p class="text-muted small mb-0">View upcoming events</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="/contact" class="card border-0 shadow-sm text-decoration-none h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope fa-2x text-rotaract-blue mb-3"></i>
+                        <h6 class="fw-bold">Contact</h6>
+                        <p class="text-muted small mb-0">Get in touch with us</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Auto-refresh functionality (optional)
+let refreshTimer;
+
+function startAutoRefresh() {
+    refreshTimer = setTimeout(() => {
+        if (confirm('Would you like to refresh the page and try again?')) {
+            location.reload();
+        }
+    }, 30000); // 30 seconds
+}
+
+// Clear timer if user navigates away
+window.addEventListener('beforeunload', () => {
+    if (refreshTimer) {
+        clearTimeout(refreshTimer);
+    }
+});
+
+// Start auto-refresh timer
+startAutoRefresh();
+
+// Report error functionality (optional)
+function reportError() {
+    const errorData = {
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        timestamp: new Date().toISOString(),
+        error: '<%= typeof error !== "undefined" && error ? error.message : "Unknown error" %>'
+    };
+    
+    // This would typically send error data to your logging service
+    console.log('Error reported:', errorData);
+    alert('Error report sent. Thank you for helping us improve!');
+}
+</script>
+
+<style>
+.error-content {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+</style>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,610 @@
+<%- include('partials/header') %>
+
+<!-- Donation Form Section -->
+<section class="py-5" style="margin-top: 76px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold text-rotaract-blue">Make a Donation</h1>
+                    <p class="lead text-muted">
+                        Your generous contribution helps us create positive change in our community
+                    </p>
+                </div>
+
+                <!-- Donation Form -->
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5">
+                        <form id="donationForm" novalidate>
+                            <!-- Donation Type Selection -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Donation Type</label>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="type" id="monetary" value="monetary" checked>
+                                            <label class="form-check-label" for="monetary">
+                                                <i class="fas fa-dollar-sign text-success me-2"></i>Monetary
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="type" id="in-kind" value="in-kind">
+                                            <label class="form-check-label" for="in-kind">
+                                                <i class="fas fa-gift text-primary me-2"></i>In-Kind
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="type" id="service" value="service">
+                                            <label class="form-check-label" for="service">
+                                                <i class="fas fa-hands-helping text-info me-2"></i>Service
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Monetary Donation Fields -->
+                            <div id="monetaryFields">
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-8">
+                                        <label for="amount" class="form-label fw-bold">Donation Amount *</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="amount" name="amount" 
+                                                   min="1" step="0.01" placeholder="0.00" required>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid donation amount.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="currency" class="form-label fw-bold">Currency</label>
+                                        <select class="form-select" id="currency" name="currency">
+                                            <option value="USD" selected>USD ($)</option>
+                                            <option value="EUR">EUR (€)</option>
+                                            <option value="GBP">GBP (£)</option>
+                                            <option value="INR">INR (₹)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Quick Amount Buttons -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Quick Select Amount</label>
+                                    <div class="row g-2">
+                                        <div class="col-6 col-md-3">
+                                            <button type="button" class="btn btn-outline-primary w-100 quick-amount" data-amount="25">$25</button>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <button type="button" class="btn btn-outline-primary w-100 quick-amount" data-amount="50">$50</button>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <button type="button" class="btn btn-outline-primary w-100 quick-amount" data-amount="100">$100</button>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <button type="button" class="btn btn-outline-primary w-100 quick-amount" data-amount="250">$250</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div class="mb-4">
+                                    <label for="paymentMethod" class="form-label fw-bold">Payment Method *</label>
+                                    <select class="form-select" id="paymentMethod" name="paymentMethod" required>
+                                        <option value="">Select payment method</option>
+                                        <option value="credit-card">Credit Card</option>
+                                        <option value="debit-card">Debit Card</option>
+                                        <option value="bank-transfer">Bank Transfer</option>
+                                        <option value="paypal">PayPal</option>
+                                        <option value="cash">Cash</option>
+                                        <option value="check">Check</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a payment method.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- In-Kind Donation Fields -->
+                            <div id="inKindFields" style="display: none;">
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Items to Donate</label>
+                                    <div id="itemsList">
+                                        <div class="item-entry border rounded p-3 mb-3">
+                                            <div class="row g-3">
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Item Name *</label>
+                                                    <input type="text" class="form-control" name="items[0][name]" placeholder="e.g., Books, Clothes">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Quantity *</label>
+                                                    <input type="number" class="form-control" name="items[0][quantity]" min="1" placeholder="1">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Estimated Value ($)</label>
+                                                    <input type="number" class="form-control" name="items[0][estimatedValue]" min="0" step="0.01" placeholder="0.00">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Condition</label>
+                                                    <select class="form-select" name="items[0][condition]">
+                                                        <option value="new">New</option>
+                                                        <option value="like-new">Like New</option>
+                                                        <option value="good" selected>Good</option>
+                                                        <option value="fair">Fair</option>
+                                                        <option value="poor">Poor</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-secondary" id="addItem">
+                                        <i class="fas fa-plus me-2"></i>Add Another Item
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Service Donation Fields -->
+                            <div id="serviceFields" style="display: none;">
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <label for="serviceType" class="form-label fw-bold">Service Type *</label>
+                                        <input type="text" class="form-control" id="serviceType" name="serviceType" 
+                                               placeholder="e.g., Web Development, Teaching">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="hoursContributed" class="form-label fw-bold">Hours to Contribute *</label>
+                                        <input type="number" class="form-control" id="hoursContributed" name="hoursContributed" 
+                                               min="1" placeholder="8">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <label for="skillsProvided" class="form-label fw-bold">Skills/Expertise</label>
+                                        <input type="text" class="form-control" id="skillsProvided" name="skillsProvided" 
+                                               placeholder="e.g., Programming, Design, Marketing">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="serviceEstimatedValue" class="form-label fw-bold">Estimated Value ($)</label>
+                                        <input type="number" class="form-control" id="serviceEstimatedValue" name="serviceEstimatedValue" 
+                                               min="0" step="0.01" placeholder="0.00">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Donation Category -->
+                            <div class="mb-4">
+                                <label for="category" class="form-label fw-bold">Donation Category</label>
+                                <select class="form-select" id="category" name="category">
+                                    <option value="general" selected>General Fund</option>
+                                    <option value="education">Education</option>
+                                    <option value="health">Health & Wellness</option>
+                                    <option value="environment">Environment</option>
+                                    <option value="community-development">Community Development</option>
+                                    <option value="emergency-relief">Emergency Relief</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Donor Information -->
+                            <div class="mb-4">
+                                <h5 class="fw-bold text-rotaract-blue mb-3">Donor Information</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="donorName" class="form-label fw-bold">Full Name *</label>
+                                        <input type="text" class="form-control" id="donorName" name="donor[name]" required>
+                                        <div class="invalid-feedback">
+                                            Please enter your full name.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="donorEmail" class="form-label fw-bold">Email Address *</label>
+                                        <input type="email" class="form-control" id="donorEmail" name="donor[email]" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-2">
+                                    <div class="col-md-6">
+                                        <label for="donorPhone" class="form-label fw-bold">Phone Number</label>
+                                        <input type="tel" class="form-control" id="donorPhone" name="donor[phone]">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mt-4">
+                                            <input class="form-check-input" type="checkbox" id="isAnonymous" name="donor[isAnonymous]">
+                                            <label class="form-check-label" for="isAnonymous">
+                                                Make this donation anonymous
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address Information -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Address (Optional)</h6>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="street" class="form-label">Street Address</label>
+                                        <input type="text" class="form-control" id="street" name="donor[address][street]">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" class="form-control" id="city" name="donor[address][city]">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="state" class="form-label">State</label>
+                                        <input type="text" class="form-control" id="state" name="donor[address][state]">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="zipCode" class="form-label">ZIP Code</label>
+                                        <input type="text" class="form-control" id="zipCode" name="donor[address][zipCode]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="mb-4">
+                                <label for="description" class="form-label fw-bold">Message/Notes (Optional)</label>
+                                <textarea class="form-control" id="description" name="description" rows="3" 
+                                          maxlength="500" placeholder="Any special message or notes about your donation"></textarea>
+                                <div class="form-text">Maximum 500 characters</div>
+                            </div>
+
+                            <!-- Recurring Donation -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="isRecurring" name="donor[isRecurring]">
+                                    <label class="form-check-label fw-bold" for="isRecurring">
+                                        Make this a recurring donation
+                                    </label>
+                                </div>
+                                <div id="recurringOptions" style="display: none;" class="mt-3">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="frequency" class="form-label">Frequency</label>
+                                            <select class="form-select" id="frequency" name="recurringDetails[frequency]">
+                                                <option value="monthly" selected>Monthly</option>
+                                                <option value="quarterly">Quarterly</option>
+                                                <option value="yearly">Yearly</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="endDate" class="form-label">End Date (Optional)</label>
+                                            <input type="date" class="form-control" id="endDate" name="recurringDetails[endDate]">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        I agree to the <a href="#" class="text-rotaract-blue">Terms and Conditions</a> and 
+                                        <a href="#" class="text-rotaract-blue">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-rotaract btn-lg px-5" id="submitBtn">
+                                    <i class="fas fa-heart me-2"></i>
+                                    <span id="submitText">Make Donation</span>
+                                    <span id="submitSpinner" class="spinner-border spinner-border-sm ms-2" style="display: none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Security Notice -->
+                <div class="text-center mt-4">
+                    <small class="text-muted">
+                        <i class="fas fa-lock me-1"></i>
+                        Your information is secure and will be used only for donation processing and receipts.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="successModalLabel">
+                    <i class="fas fa-check-circle me-2"></i>Donation Successful!
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-3">
+                    <i class="fas fa-heart text-success" style="font-size: 3rem;"></i>
+                </div>
+                <h4>Thank You for Your Generosity!</h4>
+                <p class="mb-3">Your donation has been received and will help us make a positive impact in our community.</p>
+                <div id="donationSummary" class="bg-light p-3 rounded mb-3">
+                    <!-- Donation summary will be inserted here -->
+                </div>
+                <p class="small text-muted">
+                    You will receive a confirmation email shortly with your donation receipt.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="/" class="btn btn-rotaract">Return to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('donationForm');
+    const typeRadios = document.querySelectorAll('input[name="type"]');
+    const monetaryFields = document.getElementById('monetaryFields');
+    const inKindFields = document.getElementById('inKindFields');
+    const serviceFields = document.getElementById('serviceFields');
+    const isRecurringCheckbox = document.getElementById('isRecurring');
+    const recurringOptions = document.getElementById('recurringOptions');
+    const quickAmountButtons = document.querySelectorAll('.quick-amount');
+    const amountInput = document.getElementById('amount');
+    let itemCount = 1;
+
+    // Handle donation type changes
+    typeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            monetaryFields.style.display = 'none';
+            inKindFields.style.display = 'none';
+            serviceFields.style.display = 'none';
+            
+            if (this.value === 'monetary') {
+                monetaryFields.style.display = 'block';
+            } else if (this.value === 'in-kind') {
+                inKindFields.style.display = 'block';
+            } else if (this.value === 'service') {
+                serviceFields.style.display = 'block';
+            }
+        });
+    });
+
+    // Handle recurring donation checkbox
+    isRecurringCheckbox.addEventListener('change', function() {
+        recurringOptions.style.display = this.checked ? 'block' : 'none';
+    });
+
+    // Handle quick amount buttons
+    quickAmountButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const amount = this.dataset.amount;
+            amountInput.value = amount;
+            
+            // Remove active class from all buttons
+            quickAmountButtons.forEach(btn => btn.classList.remove('btn-primary'));
+            quickAmountButtons.forEach(btn => btn.classList.add('btn-outline-primary'));
+            
+            // Add active class to clicked button
+            this.classList.remove('btn-outline-primary');
+            this.classList.add('btn-primary');
+        });
+    });
+
+    // Add item functionality for in-kind donations
+    document.getElementById('addItem').addEventListener('click', function() {
+        const itemsList = document.getElementById('itemsList');
+        const newItem = document.createElement('div');
+        newItem.className = 'item-entry border rounded p-3 mb-3';
+        newItem.innerHTML = `
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Item Name *</label>
+                    <input type="text" class="form-control" name="items[${itemCount}][name]" placeholder="e.g., Books, Clothes">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Quantity *</label>
+                    <input type="number" class="form-control" name="items[${itemCount}][quantity]" min="1" placeholder="1">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Estimated Value ($)</label>
+                    <input type="number" class="form-control" name="items[${itemCount}][estimatedValue]" min="0" step="0.01" placeholder="0.00">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Condition</label>
+                    <select class="form-select" name="items[${itemCount}][condition]">
+                        <option value="new">New</option>
+                        <option value="like-new">Like New</option>
+                        <option value="good" selected>Good</option>
+                        <option value="fair">Fair</option>
+                        <option value="poor">Poor</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <label class="form-label">&nbsp;</label>
+                    <button type="button" class="btn btn-outline-danger w-100 remove-item">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        itemsList.appendChild(newItem);
+        itemCount++;
+
+        // Add remove functionality
+        newItem.querySelector('.remove-item').addEventListener('click', function() {
+            newItem.remove();
+        });
+    });
+
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            form.classList.add('was-validated');
+            return;
+        }
+
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.textContent = 'Processing...';
+        submitSpinner.style.display = 'inline-block';
+
+        try {
+            const formData = new FormData(form);
+            const donationData = {};
+            
+            // Process form data
+            for (let [key, value] of formData.entries()) {
+                if (key.includes('[') && key.includes(']')) {
+                    // Handle nested objects and arrays
+                    const keys = key.replace(/\]/g, '').split('[');
+                    let current = donationData;
+                    
+                    for (let i = 0; i < keys.length - 1; i++) {
+                        const k = keys[i];
+                        if (!current[k]) {
+                            current[k] = isNaN(keys[i + 1]) ? {} : [];
+                        }
+                        current = current[k];
+                    }
+                    
+                    const lastKey = keys[keys.length - 1];
+                    if (Array.isArray(current)) {
+                        if (!current[lastKey]) current[lastKey] = {};
+                        // This is for array items, need to handle differently
+                    } else {
+                        current[lastKey] = value;
+                    }
+                } else {
+                    donationData[key] = value;
+                }
+            }
+
+            // Handle special fields
+            const donationType = document.querySelector('input[name="type"]:checked').value;
+            donationData.type = donationType;
+
+            // Handle in-kind items
+            if (donationType === 'in-kind') {
+                const items = [];
+                const itemEntries = document.querySelectorAll('.item-entry');
+                itemEntries.forEach((entry, index) => {
+                    const name = entry.querySelector(`input[name="items[${index}][name]"]`)?.value;
+                    const quantity = entry.querySelector(`input[name="items[${index}][quantity]"]`)?.value;
+                    const estimatedValue = entry.querySelector(`input[name="items[${index}][estimatedValue]"]`)?.value;
+                    const condition = entry.querySelector(`select[name="items[${index}][condition]"]`)?.value;
+                    
+                    if (name && quantity) {
+                        items.push({
+                            name,
+                            quantity: parseInt(quantity),
+                            estimatedValue: parseFloat(estimatedValue) || 0,
+                            condition
+                        });
+                    }
+                });
+                donationData.inKindDetails = { items };
+            }
+
+            // Handle service details
+            if (donationType === 'service') {
+                donationData.serviceDetails = {
+                    serviceType: document.getElementById('serviceType').value,
+                    hoursContributed: parseInt(document.getElementById('hoursContributed').value),
+                    skillsProvided: document.getElementById('skillsProvided').value.split(',').map(s => s.trim()),
+                    estimatedValue: parseFloat(document.getElementById('serviceEstimatedValue').value) || 0
+                };
+            }
+
+            // Handle recurring details
+            if (document.getElementById('isRecurring').checked) {
+                donationData.recurringDetails = {
+                    frequency: document.getElementById('frequency').value,
+                    endDate: document.getElementById('endDate').value || null
+                };
+            }
+
+            const response = await fetch('/api/donations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(donationData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Show success modal
+                showSuccessModal(result.data);
+                form.reset();
+                form.classList.remove('was-validated');
+            } else {
+                throw new Error(result.message || 'Failed to process donation');
+            }
+        } catch (error) {
+            console.error('Error submitting donation:', error);
+            alert('There was an error processing your donation. Please try again.');
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.textContent = 'Make Donation';
+            submitSpinner.style.display = 'none';
+        }
+    });
+
+    function showSuccessModal(donation) {
+        const modal = new bootstrap.Modal(document.getElementById('successModal'));
+        const summaryDiv = document.getElementById('donationSummary');
+        
+        let summaryHTML = `
+            <div class="row">
+                <div class="col-6"><strong>Donation Type:</strong></div>
+                <div class="col-6">${donation.type.charAt(0).toUpperCase() + donation.type.slice(1)}</div>
+            </div>
+        `;
+        
+        if (donation.type === 'monetary') {
+            summaryHTML += `
+                <div class="row">
+                    <div class="col-6"><strong>Amount:</strong></div>
+                    <div class="col-6">${donation.currency} ${donation.amount}</div>
+                </div>
+            `;
+        }
+        
+        summaryHTML += `
+            <div class="row">
+                <div class="col-6"><strong>Category:</strong></div>
+                <div class="col-6">${donation.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</div>
+            </div>
+            <div class="row">
+                <div class="col-6"><strong>Status:</strong></div>
+                <div class="col-6"><span class="badge bg-warning">${donation.status.charAt(0).toUpperCase() + donation.status.slice(1)}</span></div>
+            </div>
+        `;
+        
+        summaryDiv.innerHTML = summaryHTML;
+        modal.show();
+    }
+});
+</script>
+
+<%- include('partials/footer') %>

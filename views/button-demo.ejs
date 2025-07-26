@@ -1,0 +1,187 @@
+<%- include('partials/header') %>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-5 text-rotaract-blue">Responsive Button Showcase</h1>
+            
+            <!-- Primary Buttons -->
+            <div class="mb-5">
+                <h3 class="mb-3">Primary Buttons</h3>
+                <div class="btn-container-responsive mb-3">
+                    <button class="btn btn-rotaract btn-animate">
+                        <i class="fas fa-star me-2"></i>Primary Button
+                    </button>
+                    <button class="btn btn-rotaract btn-lg btn-animate">
+                        <i class="fas fa-heart me-2"></i>Large Button
+                    </button>
+                    <button class="btn btn-rotaract btn-sm btn-animate">
+                        <i class="fas fa-check me-2"></i>Small Button
+                    </button>
+                </div>
+            </div>
+
+            <!-- Secondary Buttons -->
+            <div class="mb-5">
+                <h3 class="mb-3">Secondary Buttons</h3>
+                <div class="btn-container-responsive mb-3">
+                    <button class="btn btn-outline-primary btn-animate">
+                        <i class="fas fa-info me-2"></i>Outline Button
+                    </button>
+                    <button class="btn btn-secondary btn-animate">
+                        <i class="fas fa-cog me-2"></i>Secondary
+                    </button>
+                    <button class="btn btn-success btn-animate">
+                        <i class="fas fa-check-circle me-2"></i>Success
+                    </button>
+                </div>
+            </div>
+
+            <!-- Button Groups -->
+            <div class="mb-5">
+                <h3 class="mb-3">Button Groups</h3>
+                <div class="btn-group-responsive mb-3">
+                    <button class="btn btn-outline-primary btn-animate">
+                        <i class="fas fa-align-left me-2"></i>Left
+                    </button>
+                    <button class="btn btn-outline-primary btn-animate">
+                        <i class="fas fa-align-center me-2"></i>Center
+                    </button>
+                    <button class="btn btn-outline-primary btn-animate">
+                        <i class="fas fa-align-right me-2"></i>Right
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mb-5">
+                <h3 class="mb-3">Action Buttons</h3>
+                <div class="btn-container-responsive mb-3">
+                    <button class="btn btn-success btn-animate" onclick="ButtonUtils.showLoading(this)">
+                        <i class="fas fa-save me-2"></i>Save Changes
+                    </button>
+                    <button class="btn btn-warning btn-animate">
+                        <i class="fas fa-edit me-2"></i>Edit
+                    </button>
+                    <button class="btn btn-danger btn-animate" data-confirm="Are you sure you want to delete this item?">
+                        <i class="fas fa-trash me-2"></i>Delete
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading States -->
+            <div class="mb-5">
+                <h3 class="mb-3">Loading States</h3>
+                <div class="btn-container-responsive mb-3">
+                    <button class="btn btn-rotaract btn-animate" onclick="simulateLoading(this)">
+                        <i class="fas fa-download me-2"></i>Download
+                    </button>
+                    <button class="btn btn-primary btn-animate" onclick="simulateLoading(this)">
+                        <i class="fas fa-upload me-2"></i>Upload
+                    </button>
+                    <button class="btn btn-info btn-animate" onclick="simulateLoading(this)">
+                        <i class="fas fa-sync me-2"></i>Refresh
+                    </button>
+                </div>
+            </div>
+
+            <!-- Floating Action Button -->
+            <div class="mb-5">
+                <h3 class="mb-3">Floating Action Button</h3>
+                <button class="btn btn-rotaract btn-fab btn-animate">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <!-- Responsive Text Buttons -->
+            <div class="mb-5">
+                <h3 class="mb-3">Responsive Text (Resize window to see effect)</h3>
+                <div class="btn-container-responsive mb-3">
+                    <button class="btn btn-rotaract btn-animate btn-responsive-text" 
+                            data-full-text="Register for Event" 
+                            data-short-text="Register">
+                        <i class="fas fa-user-plus me-2"></i>Register for Event
+                    </button>
+                    <button class="btn btn-outline-primary btn-animate btn-responsive-text" 
+                            data-full-text="View All Details" 
+                            data-short-text="Details">
+                        <i class="fas fa-info-circle me-2"></i>View All Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form Example -->
+            <div class="mb-5">
+                <h3 class="mb-3">Form Buttons</h3>
+                <form class="row g-3" onsubmit="handleFormSubmit(event)">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" rows="3" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="col-12">
+                        <div class="btn-container-responsive">
+                            <button type="submit" class="btn btn-rotaract btn-animate">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary btn-animate">
+                                <i class="fas fa-undo me-2"></i>Reset Form
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simulate loading state
+    function simulateLoading(button) {
+        ButtonUtils.showLoading(button);
+        
+        setTimeout(() => {
+            ButtonUtils.hideLoading(button);
+            showAlert('success', 'Action completed successfully!');
+        }, 2000);
+    }
+
+    // Handle form submission
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        ButtonUtils.showLoading(submitButton);
+        
+        // Simulate API call
+        setTimeout(() => {
+            ButtonUtils.hideLoading(submitButton);
+            showAlert('success', 'Form submitted successfully!');
+            event.target.reset();
+        }, 1500);
+    }
+
+    // Show alert function (from footer)
+    function showAlert(type, message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+        alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 250px; max-width: 90vw;';
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.body.appendChild(alertDiv);
+        
+        setTimeout(() => {
+            if (alertDiv.parentNode) {
+                alertDiv.parentNode.removeChild(alertDiv);
+            }
+        }, 5000);
+    }
+</script>
+
+<%- include('partials/footer') %>

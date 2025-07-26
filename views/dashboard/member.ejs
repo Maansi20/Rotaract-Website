@@ -1,0 +1,428 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid" style="margin-top: 76px;">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <div class="sidebar-brand mb-4">
+                    <h5 class="text-rotaract-blue fw-bold">
+                        <i class="fas fa-user-circle me-2"></i>
+                        Member Portal
+                    </h5>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active sidebar-link" href="/dashboard/member">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sidebar-link" href="/profile">
+                            <i class="fas fa-user me-2"></i>
+                            My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sidebar-link" href="/events">
+                            <i class="fas fa-calendar me-2"></i>
+                            Events
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sidebar-link" href="/announcements">
+                            <i class="fas fa-bullhorn me-2"></i>
+                            Announcements
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sidebar-link" href="/discussions">
+                            <i class="fas fa-comments me-2"></i>
+                            Discussions
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">
+                    <i class="fas fa-tachometer-alt me-2 text-rotaract-blue"></i>
+                    Member Dashboard
+                </h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-download me-1"></i><span class="d-none d-sm-inline">Export</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome Message -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="alert alert-info border-0 shadow-sm">
+                        <h4 class="alert-heading">
+                            <i class="fas fa-hand-wave me-2"></i>
+                            Welcome back, <%= userProfile.firstName %>!
+                        </h4>
+                        <p class="mb-0">
+                            You've been a member since <%= formatDate(userProfile.joinDate) %>. 
+                            Thank you for being part of our community service mission.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Registered Events
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="registeredEvents">
+                                        <%= userEvents.length %>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar-check fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Events Attended
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="attendedEvents">
+                                        0
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-user-check fa-2x text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        Upcoming Events
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="upcomingEvents">
+                                        <%= upcomingEvents.length %>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clock fa-2x text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Unread Announcements
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="unreadAnnouncements">
+                                        <%= announcements.length %>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-bullhorn fa-2x text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Events -->
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0">
+                            <h5 class="mb-0">
+                                <i class="fas fa-calendar-alt me-2 text-rotaract-blue"></i>
+                                My Registered Events
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <% if (userEvents.length > 0) { %>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Event</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% userEvents.forEach(event => { %>
+                                                <tr>
+                                                    <td>
+                                                        <strong><%= event.title %></strong><br>
+                                                        <small class="text-muted"><%= event.location.name %></small>
+                                                    </td>
+                                                    <td>
+                                                        <%= formatDate(event.startDate) %>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-success">Registered</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/events/<%= event._id %>" class="btn btn-sm btn-outline-primary btn-animate w-100 w-sm-auto">
+                                                            <span class="d-none d-sm-inline">View </span>Details
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% } else { %>
+                                <div class="text-center py-4">
+                                    <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">No registered events</h5>
+                                    <p class="text-muted">Browse our upcoming events and register to participate.</p>
+                                    <a href="/events" class="btn btn-rotaract btn-animate w-100 w-sm-auto">
+                                        <i class="fas fa-search me-2"></i>Browse Events
+                                    </a>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Announcements -->
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0">
+                            <h5 class="mb-0">
+                                <i class="fas fa-bullhorn me-2 text-rotaract-gold"></i>
+                                Recent Announcements
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <% if (announcements.length > 0) { %>
+                                <% announcements.forEach(announcement => { %>
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-rotaract-blue text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                                 style="width: 40px; height: 40px;">
+                                                <i class="fas fa-bullhorn"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1"><%= announcement.title %></h6>
+                                            <p class="mb-1 text-muted small">
+                                                <%= announcement.summary || announcement.content.substring(0, 100) + '...' %>
+                                            </p>
+                                            <small class="text-muted">
+                                                <%= formatDate(announcement.publishDate) %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                                <div class="text-center">
+                                    <a href="/announcements" class="btn btn-sm btn-outline-primary btn-animate w-100 w-sm-auto">
+                                        <span class="d-none d-sm-inline">View All </span>Announcements
+                                    </a>
+                                </div>
+                            <% } else { %>
+                                <div class="text-center py-3">
+                                    <i class="fas fa-bullhorn fa-2x text-muted mb-2"></i>
+                                    <p class="text-muted mb-0">No recent announcements</p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events to Join -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0">
+                            <h5 class="mb-0">
+                                <i class="fas fa-plus-circle me-2 text-success"></i>
+                                Upcoming Events You Can Join
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <% if (upcomingEvents.length > 0) { %>
+                                <div class="row">
+                                    <% upcomingEvents.forEach(event => { %>
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <div class="card border">
+                                                <div class="card-body">
+                                                    <h6 class="card-title"><%= event.title %></h6>
+                                                    <p class="card-text text-muted small">
+                                                        <%= event.shortDescription || event.description.substring(0, 80) + '...' %>
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">
+                                                            <i class="fas fa-calendar me-1"></i>
+                                                            <%= formatDate(event.startDate) %>
+                                                        </small>
+                                                        <a href="/events/<%= event._id %>" class="btn btn-sm btn-rotaract btn-animate w-100">
+                                                            Join
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            <% } else { %>
+                                <div class="text-center py-4">
+                                    <i class="fas fa-calendar-plus fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">No upcoming events available</h5>
+                                    <p class="text-muted">Check back later for new events to join.</p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<style>
+    /* Sidebar Styles */
+    .sidebar {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-right: 2px solid var(--rotaract-gold);
+        min-height: calc(100vh - 76px);
+    }
+
+    .sidebar-brand {
+        padding: 1rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .sidebar-link {
+        color: #495057 !important;
+        font-weight: 500;
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .sidebar-link:hover {
+        background-color: rgba(31, 71, 136, 0.1);
+        color: var(--rotaract-blue) !important;
+        transform: translateX(5px);
+        border-left-color: var(--rotaract-gold);
+    }
+
+    .sidebar-link.active {
+        background-color: var(--rotaract-blue);
+        color: white !important;
+        border-left-color: var(--rotaract-gold);
+    }
+
+    .sidebar-link i {
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Main content area */
+    .main-content {
+        padding: 2rem;
+    }
+
+    /* Dashboard cards */
+    .dashboard-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Responsive sidebar */
+    @media (max-width: 767.98px) {
+        .sidebar {
+            position: fixed;
+            top: 76px;
+            left: -100%;
+            width: 280px;
+            height: calc(100vh - 76px);
+            z-index: 1000;
+            transition: left 0.3s ease;
+        }
+
+        .sidebar.show {
+            left: 0;
+        }
+
+        .main-content {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<script>
+    // Load dashboard statistics
+    document.addEventListener('DOMContentLoaded', function() {
+        loadMemberStats();
+    });
+
+    async function loadMemberStats() {
+        try {
+            const response = await fetch('/dashboard/api/member/stats');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                    updateStatsCards(data.data);
+                }
+            }
+        } catch (error) {
+            console.error('Failed to load stats:', error);
+        }
+    }
+
+    function updateStatsCards(stats) {
+        document.getElementById('registeredEvents').textContent = stats.registeredEvents || 0;
+        document.getElementById('attendedEvents').textContent = stats.attendedEvents || 0;
+        document.getElementById('upcomingEvents').textContent = stats.upcomingEvents || 0;
+        document.getElementById('unreadAnnouncements').textContent = stats.unreadAnnouncements || 0;
+    }
+</script>
+
+<%- include('../partials/footer') %>
